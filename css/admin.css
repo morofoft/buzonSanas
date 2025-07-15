@@ -1,0 +1,320 @@
+/* =======================
+   🎨 Variables de color
+========================== */
+:root {
+  --primary: #3f51b5;
+  --primary-light: #5c6bc0;
+  --secondary: #3949ab;
+  --success: #43a047;
+  --danger: #e53935;
+  --danger-hover: #b62a28;
+  --warning: #fbc02d;
+  --gray: #757575;
+  --light: #f4f6f8;
+  --white: #ffffff;
+  --dark: #263238;
+}
+
+/* =======================
+   📦 Global
+========================== */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* =======================
+   📦 Layout general
+========================== */
+body {
+  font-family: "Segoe UI", sans-serif;
+}
+
+.admin-panel {
+  width: 100dvw;
+  background: var(--white);
+  border-radius: 2px;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 100px 75px 1fr 50px;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+/* =======================
+   🧩 Pies del panel
+========================== */
+.panel-footer {
+  background: var(--primary);
+  color: white;
+  padding: 20px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* =======================
+   🧩 Encabezado del panel
+========================== */
+.panel-header {
+  background: var(--primary);
+  color: white;
+  padding: 20px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.panel-header h1 {
+  font-size: 20px;
+
+  span {
+    font-size: 30px;
+  }
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-icon {
+  background: white;
+  color: var(--primary);
+  border: none;
+  font-size: 18px;
+  padding: 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-icon:hover {
+  background: var(--primary-light);
+  color: white;
+}
+
+/* =======================
+   🎛️ Filtros
+========================== */
+.panel-filters {
+  background: var(--white);
+  padding: 15px 25px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.panel-filters select,
+.panel-filters input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  min-width: 180px;
+}
+
+/* =======================
+   🧾 Contenedor de sugerencias
+========================== */
+.suggestions-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.suggestion {
+  width: 240px;
+  height: 320px; /* Fijo en altura */
+  overflow: hidden;
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  display: grid;
+  grid-template-areas:
+    "categoria"
+    "categoria-text"
+    "usuario"
+    "mensaje"
+    "actions"
+    "fecha";
+  grid-template-columns: 1fr;
+  text-align: center;
+  padding: 15px 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.4s ease both;
+}
+.suggestion:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+.suggestion.read {
+  background: var(--dark);
+  p {
+    color: var(--white);
+  }
+  opacity: 0.9;
+}
+
+.suggestion .categoria {
+  grid-area: categoria;
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+.suggestion .categoria-text {
+  grid-area: categoria-text;
+  font-weight: bold;
+  color: var(--secondary);
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.suggestion .usuario {
+  grid-area: usuario;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+
+.suggestion .mensaje {
+  grid-area: mensaje;
+  font-size: 14px;
+  color: var(--dark);
+  padding: 0 10px;
+  margin-bottom: 10px;
+    overflow: auto;
+  max-height: 100px;
+  padding: 10px;
+  font-size: 14px;
+  color: var(--dark);
+}
+
+.suggestion .actions {
+  grid-area: actions;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.suggestion button {
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.suggestion .btn-toggle {
+  background: var(--primary);
+  color: white;
+}
+
+.suggestion .btn-toggle:hover {
+  background: var(--secondary);
+}
+
+.suggestion .btn-delete {
+  background: var(--danger);
+  color: white;
+}
+
+.suggestion .btn-delete:hover {
+  background: var(--danger-hover);
+}
+
+.suggestion .date {
+  grid-area: fecha;
+  font-size: 12px;
+  color: var(--gray);
+  margin-top: 8px;
+}
+
+/* =======================
+   ✨ Animación de entrada
+========================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.suggestion {
+  animation: fadeInUp 0.4s ease both;
+}
+
+
+/* =======================
+   ⏳ Cargando
+========================== */
+.loading {
+  text-align: center;
+  padding: 30px;
+  color: var(--gray);
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--primary);
+  border-top-color: transparent;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =======================
+   ❌ Vacío
+========================== */
+.empty {
+  text-align: center;
+  padding: 30px;
+  font-style: italic;
+  color: var(--gray);
+}
+
+/* =======================
+   📱 Responsive
+========================== */
+@media (max-width: 768px) {
+  .panel-filters {
+    flex-direction: column;
+  }
+
+  .header-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .panel-header h1 {
+    text-align: center;
+    width: 100%;
+  }
+}

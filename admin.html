@@ -1,0 +1,48 @@
+<!-- admin.html -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Admin - Buzón de Sugerencias</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+  <div id="panel" class="admin-panel">
+    <div class="panel-header">
+      <h1><span><i class="fas fa-envelope"></i> BSS</span></h1>
+      <div class="header-actions">
+        <button id="btnStats" class="btn-icon" title="Estadísticas"><i class="fas fa-chart-bar"></i></button>
+        <button id="btnExport" class="btn-icon" title="Exportar"><i class="fas fa-download"></i></button>
+        <button id="btnRefresh" class="btn-icon" title="Actualizar"><i class="fas fa-rotate-right"></i></button>
+        <button id="btnLogout" class="btn-icon" title="Cerrar sesión"><i class="fas fa-right-from-bracket"></i></button>
+      </div>
+    </div>
+
+    <div class="panel-filters">
+      <select id="filterStatus">
+        <option value="all">Todas</option>
+        <option value="read">Leídas</option>
+        <option value="unread">No leídas</option>
+      </select>
+      <select id="filterCategory"></select>
+      <input type="text" id="searchInput" placeholder="Buscar...">
+    </div>
+
+    <div id="suggestionsContainer" class="suggestions-container"></div>
+
+    <footer class="panel-footer">
+      <p>&copy; 2025. Ing. Pedro Garcia.</p>
+    </footer>
+  </div>
+  <script type="module" src="js/admin.js"></script>
+</body>
+
+</html>
